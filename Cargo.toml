@@ -1,0 +1,12 @@
+[package]
+name = "blockchain-rust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "lib"
+path = "src/lib/mod.rs"
+
+[dependencies]
+chrono = "0.4.38"
+sha2 = "0.10.8"
