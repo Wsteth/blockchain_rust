@@ -10,3 +10,4 @@ path = "src/lib/mod.rs"
 [dependencies]
 chrono = "0.4.38"
 sha2 = "0.10.8"
+num = "0.4.2"
