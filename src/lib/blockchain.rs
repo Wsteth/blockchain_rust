@@ -29,7 +29,7 @@ impl Blockchain {
         Ok(Blockchain { tip, db })
     }
 
-    pub fn add_block(&mut self, data: &str) -> Result<()> {
+    pub fn add_block(&mut self, data: &str) -> Result<Block> {
         let last_serialized_block =
             String::from_utf8(self.db.get(&self.tip)?.unwrap().to_vec()).unwrap();
         let last_block = Block::deserialize(&last_serialized_block);
@@ -41,7 +41,7 @@ impl Blockchain {
             .insert(new_block.hash.clone(), new_block.serialize().as_bytes())?;
         self.tip.clone_from(&new_block.hash);
         self.db.flush()?;
-        Ok(())
+        Ok(new_block)
     }
     pub fn iter(&self) -> BlockchainIterator {
         BlockchainIterator {
